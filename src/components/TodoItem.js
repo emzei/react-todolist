@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
+import { Button, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 class TodoItem extends Component {
 
     render() {
-        let itemClassName = 'list-group-item';
+        let itemClassName = 'd-flex justify-content-between align-items-start list-group-item ';
         if(this.props.todoitem.done){
-            itemClassName += 'list-group-item-success';
+            itemClassName += ' success';
         }
         return (
-            <li className={itemClassName}>
-                <span className={this.props.todoitem.done?"todo-done pointer":"pointer"}
+            <ListGroup.Item as="li" className={itemClassName}>
+                <span className={this.props.todoitem.done?"text-muted ":""}
                     onClick={ ()=> this.props.toggleDone(this.props.todoitem.no)} >
-                    {this.props.todoitem.todo} {this.props.todoitem.done?"(Done)":""}    
+                    {this.props.todoitem.todo} {this.props.todoitem.done ? "(Done)":""}    
                 </span>
-                <span className='float-right badge badge-seconary pointer'
-                    onClick={ ()=> this.props.deleteTodo(this.props.todoitem.no)} >Delete</span>
-            </li>
+                <Button variant="danger" className='float-end pointer ' onClick={ ()=> this.props.deleteTodo(this.props.todoitem.no)} >Delete</Button>
+            </ListGroup.Item>
         );
     }
 }

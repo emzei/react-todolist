@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col, ListGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 class TodoList extends Component {
@@ -10,13 +11,13 @@ class TodoList extends Component {
             )
         })
         return (
-            <div className='row'>
-                <div className='col'>
-                    <ul className='list-group'>
+            <Row>
+                <Col>
+                    <ListGroup as="ul" variant="flush">
                         {todoItems}
-                    </ul>
-                </div>
-            </div>
+                    </ListGroup>
+                </Col>
+            </Row>
         );
     }
 }

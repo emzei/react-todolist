@@ -36,7 +36,6 @@ class AppContainer extends Component {
         let index = this.state.todolist.findIndex((todo)=>todo.no === no);
         let newTodoList = produce(this.state.todolist, (draft) => {
             draft[index].done = !draft[index].done;
-    
         })
         this.setState({ todolist : newTodoList });
     }

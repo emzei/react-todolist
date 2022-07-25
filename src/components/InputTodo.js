@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col, InputGroup, Row, Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class InputTodo extends Component {
@@ -9,7 +10,6 @@ class InputTodo extends Component {
         }
     }
     addHandler = () =>{
-        console.log(this.state.todo);
         this.props.addTodo(this.state.todo);
         this.setState({todo:""})
     }    
@@ -23,19 +23,19 @@ class InputTodo extends Component {
     }
     render() {
         return (
-            <div className='row'>
-                <div className='col'>
-                <div className='input-group'>
-                <input id='msg' type='text'
-                    className='form-control' name='msg'
-                    placeholder='enter your to-do item here'
-                    value={this.state.todo}
-                    onChange={this.changeTodo}
-                    onKeyUp={this.enterInput} />
-                <span className='btn btn-primary input-group-addon' onClick={this.addHandler}>Add</span>
-                </div>
-                </div>
-            </div>
+            <Row>
+                <Col lg={12} className="align-items-center text-center pb-3">
+                <InputGroup>
+                    <Form.Control id='msg' type='text'
+                        className='form-control' name='msg'
+                        placeholder='Enter your to-do item here'
+                        value={this.state.todo}
+                        onChange={this.changeTodo}
+                        onKeyUp={this.enterInput} />
+                    <Button variant="primary" onClick={this.addHandler}>Add</Button>
+                </InputGroup>
+                </Col>
+            </Row> 
         );
     }
 }
